@@ -3157,6 +3157,9 @@ if( !class_exists( 'ReduxFramework' ) ) {
         public function _can_output_css($field) {
             $return = true;
             if (!empty($field['required'])) {
+                if( !empty($field['force_output'])){
+                    return $return;
+                }     
                 if (isset($field['required'][0])) {
                     if (!is_array($field['required'][0]) && count($field['required']) == 3) {
                         $parentValue = $GLOBALS[$this->args['global_variable']][$field['required'][0]];
